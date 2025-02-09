@@ -1,0 +1,6 @@
+@OvechkinCounter_HostAddress = http://localhost:5228
+
+GET {{OvechkinCounter_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

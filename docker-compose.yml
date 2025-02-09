@@ -1,0 +1,16 @@
+﻿services:
+  postgres:
+    image: postgres:latest
+    container_name: wsh-postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: pX4xNqW2025
+      POSTGRES_DB: wsh-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+    driver: local
