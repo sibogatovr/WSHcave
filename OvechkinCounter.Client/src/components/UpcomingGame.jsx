@@ -1,11 +1,15 @@
 import React from "react";
 
-const UpcomingGame = ({ game }) => {
+const UpcomingGame = ({ game, allGames }) => {
+   const sortedGames = [...allGames].sort((a, b) => new Date(a.gameDate) - new Date(b.gameDate));
+   const gameNumber = sortedGames.findIndex(g => g.id === game.id) + 1;
+
   const gameDate = new Date(game.gameDate);
   const startTime = new Date(game.startTimeUTC);
 
   return (
     <div key={game.gamePk} className="p-2">
+      <p># {gameNumber - 6} / 82</p>
       <p>
         🏒 {game.awayTeam.abbrev} vs {game.homeTeam.abbrev}
       </p>

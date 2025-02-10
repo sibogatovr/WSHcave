@@ -1,9 +1,13 @@
-export default function ({ playerInfo }) {
-  if (!playerInfo || !playerInfo.featuredStats) {
+export default function ({ playerInfo, teamSchedule }) {
+  if (!playerInfo || !playerInfo.featuredStats || !teamSchedule || !teamSchedule.games) {
     return <div className="text-white text-center p-6">Loading stats...</div>;
   }
 
   const regularSeason = playerInfo.featuredStats?.regularSeason?.subSeason;
+
+  const sortedGames = [...teamSchedule.games].sort((a, b) => new Date(a.gameDate) - new Date(b.gameDate));
+  const nextGame = sortedGames.find(g => new Date(g.gameDate) > new Date());
+  const gameNumber = nextGame ? sortedGames.findIndex(g => g.id === nextGame.id) + 1 : 0;
 
   if (!regularSeason) {
     return <div className="text-white text-center p-6">No data available</div>;
@@ -23,7 +27,7 @@ export default function ({ playerInfo }) {
           Games left
         </dt>
         <dd className="order-1 text-5xl font-extrabold">
-          {82 - regularSeason.gamesPlayed}
+          {82 - (gameNumber - 6)}
         </dd>
       </div>
       <div className="flex flex-col border-t border-gray-900 p-6 text-center sm:border-0 sm:border-l">

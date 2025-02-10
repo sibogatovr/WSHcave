@@ -22,7 +22,6 @@ const Home = () => {
       setLoading(true);
       try {
         const data = await fetchPlayerInfo(8471214);
-        console.log("Player data fetched:", data);
         setPlayerInfo(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -38,7 +37,6 @@ const Home = () => {
     const fetchSchedule = async () => {
       try {
         const scheduleData = await fetchTeamSchedule(teamAbbrev);
-        console.log("Team schedule fetched:", scheduleData);
         setTeamSchedule(scheduleData);
       } catch (error) {
         console.error("Error fetching team schedule:", error);
@@ -49,11 +47,9 @@ const Home = () => {
   }, [teamAbbrev]);
 
   useEffect(() => {
-    console.log("Fetching news started");
     const fetchNewsData = async () => {
       try {
         const newsData = await fetchNews();
-        console.log("News fetched:", newsData);
         setNews(newsData);
       } catch (error) {
         console.error("Error fetching news:", error);
@@ -70,8 +66,9 @@ const Home = () => {
         <BrandStack />
         <TwoPlayers playerInfo={playerInfo} />
       </div>
-      <PucksPerGame playerInfo={playerInfo} />
+      <PucksPerGame playerInfo={playerInfo} teamSchedule={teamSchedule}/>
       <NewsSlider news={news} />
+      
     </>
   );
 };

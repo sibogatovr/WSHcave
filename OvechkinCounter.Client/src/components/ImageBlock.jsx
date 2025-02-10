@@ -12,7 +12,7 @@ export default function ImageBlock({ playerInfo, teamSchedule }) {
   return (
     <>
        <div className="flex justify-center text-white">
-        {upcomingGame && <UpcomingGame game={upcomingGame} />}
+        {upcomingGame && <UpcomingGame game={upcomingGame} allGames={teamSchedule.games} />}
       </div>
      
       <div className="relative flex justify-center">
