@@ -6,4 +6,5 @@ public interface INhlService
 {
     Task<JsonObject?> GetPlayerInfoAsync(int playerId);
     Task<JsonObject?> GetTeamScheduleAsync(string teamAbbrev);
+    Task<JsonObject?> GetGameStoryAsync(int gameId);
 }

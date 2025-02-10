@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiBaseUrl = "http://localhost:5228/api/nhl"; // Убедитесь, что URL правильный
+const apiBaseUrl = "http://localhost:5228/api/nhl";
 
 export const fetchPlayerInfo = async (playerId) => {
   try {
@@ -8,7 +8,7 @@ export const fetchPlayerInfo = async (playerId) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching player info:", error);
-    throw error; // Прокидываем ошибку дальше
+    throw error;
   }
 };
 
@@ -18,7 +18,7 @@ export const fetchTeamSchedule = async (teamAbbrev) => {
     return response.data;
   } catch (error) {
     console.error("Error fetching team schedule:", error);
-    throw error; // Прокидываем ошибку дальше
+    throw error;
   }
 };
 
@@ -28,6 +28,17 @@ export const fetchNews = async () => {
     return response.data;
   } catch (error) {
     console.error("Error fetching news:", error);
-    throw error; // Прокидываем ошибку дальше
+    throw error;
+  }
+};
+
+export const fetchGameStory = async (gameId) => {
+  try{
+    const response = await axios.get(`http://localhost:5228/api/Nhl/games/story/${gameId}`);
+    return response.data;
+  }
+  catch(e)
+  {
+    console.log('error');
   }
 };

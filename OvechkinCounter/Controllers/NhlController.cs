@@ -26,4 +26,14 @@ public class NhlController(INhlService nhlService) : Controller
         
         return Ok(teamData);
     }
+
+    [HttpGet("games/story/{storyId:int}")]
+    public async Task<IActionResult> GetGamesStory(int storyId)
+    {
+        var gameStoryData = await nhlService.GetGameStoryAsync(storyId);
+        if (gameStoryData == null)
+            return NotFound();
+        
+        return Ok(gameStoryData);
+    }
 }

@@ -10,8 +10,9 @@ export default function Navbar() {
             <Typography variant="h6" sx={{ flexGrow: 1 }}>
               
             </Typography>
-            <Button color="inherit" component={Link} to="/">Главная</Button>
-            <Button color="inherit" component={Link} to="news">Новости</Button>
+            <Button color="inherit" component={Link} to="/">Home</Button>
+            <Button color="inherit" component={Link} to="news">News</Button>
+            <Button color="inherit" component={Link} to="schedule">Schedule</Button>
           </Toolbar>
         </Container>
       </AppBar>

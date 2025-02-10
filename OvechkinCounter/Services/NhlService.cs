@@ -29,4 +29,16 @@ public class NhlService(HttpClient httpClient) : INhlService
         var content = await response.Content.ReadAsStringAsync();
         return JsonNode.Parse(content) as JsonObject;
     }
+
+    public async Task<JsonObject?> GetGameStoryAsync(int gameId)
+    {
+        var url = $"{_baseUri}wsc/game-story/{gameId}";
+        var response = await httpClient.GetAsync(url);
+
+        if (!response.IsSuccessStatusCode)
+            return null;
+        
+        var content = await response.Content.ReadAsStringAsync();
+        return JsonNode.Parse(content) as JsonObject;
+    }
 }

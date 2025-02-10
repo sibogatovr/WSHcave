@@ -66,9 +66,10 @@ const Home = () => {
         <BrandStack />
         <TwoPlayers playerInfo={playerInfo} />
       </div>
-      <PucksPerGame playerInfo={playerInfo} teamSchedule={teamSchedule}/>
+      <div className="min-h-[130px]">
+        <PucksPerGame playerInfo={playerInfo} teamSchedule={teamSchedule} />
+      </div>
       <NewsSlider news={news} />
-      
     </>
   );
 };
